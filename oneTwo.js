@@ -28,7 +28,7 @@ function handleFormSubmit() {
     event.preventDefault();
     let containerHTML = renderResult($("#numPictures :selected").val());
     containerHTML.then(function(result) {
-      $(".container").html(result);
+      $("#container").html(result);
     });
   });
 }
