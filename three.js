@@ -5,6 +5,7 @@ function handleSubmit() {
     fetch(`https://dog.ceo/api/breed/${userInput}/images/random`)
       .then(function(result) {
         if (!result.ok) {
+          $("#container2").html(`<p>ERROR: Breed not found</p>`);
           throw new Error("breed not found");
         } else {
           return result.json();
