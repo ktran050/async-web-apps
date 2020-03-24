@@ -24,11 +24,10 @@ function renderQuestion() {
 }
 
 function handleFormSubmit() {
-  $("#form").on("click", ".submit", function(event) {
+  $("#form").on("click", "#submit", function(event) {
     event.preventDefault();
     let containerHTML = renderResult($("#numPictures :selected").val());
     containerHTML.then(function(result) {
-      console.log("result", result);
       $(".container").html(result);
     });
   });
@@ -43,19 +42,17 @@ async function renderResult(someNum, someResult) {
       })
       .then(function(result) {
         resultHTML += `<img src="${JSON.parse(result).message}">`;
-        console.log(`inside loop: ${resultHTML}`);
       })
       .catch(function(error) {
         console.log("error", error);
       });
   }
-  console.log(`outside loop: ${resultHTML}`);
   return resultHTML;
 }
 
 function renderForm() {
   let formHTML = renderQuestion();
-  formHTML += "<input type='submit' class='submit'/>";
+  formHTML += "<input type='submit' id='submit'/>";
   $("#form").html(formHTML);
 }
 
