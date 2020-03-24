@@ -27,11 +27,14 @@ function handleFormSubmit() {
   $("#form").on("click", ".submit", function(event) {
     event.preventDefault();
     let containerHTML = renderResult($("#numPictures :selected").val());
+    containerHTML.then(function(result) {
+      console.log("result", result);
+    });
     $(".container").html(containerHTML);
   });
 }
 
-async function renderResult(someNum) {
+async function renderResult(someNum, someResult) {
   let resultHTML = "";
   for (let i = 0; i < someNum; ++i) {
     await fetch("https://dog.ceo/api/breeds/image/random", requestOptions)
