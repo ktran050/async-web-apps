@@ -29,8 +29,8 @@ function handleFormSubmit() {
     let containerHTML = renderResult($("#numPictures :selected").val());
     containerHTML.then(function(result) {
       console.log("result", result);
+      $(".container").html(result);
     });
-    $(".container").html(containerHTML);
   });
 }
 
