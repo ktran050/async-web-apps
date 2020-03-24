@@ -4,11 +4,11 @@ function handleSubmit() {
     let userInput = $("#breedInput").val();
     fetch(`https://dog.ceo/api/breed/${userInput}/images/random`)
       .then(function(result) {
-        if (!result.ok) {
-          $("#container2").html(`<p>ERROR: Breed not found</p>`);
-          throw new Error("breed not found");
-        } else {
+        if (result.ok) {
           return result.json();
+        } else {
+          $("#container2").html("<p>ERROR: Breed not found</p>");
+          throw new Error("breed not found");
         }
       })
       .then(function(result) {
@@ -21,7 +21,6 @@ function handleSubmit() {
 }
 
 function handleThree() {
-  console.log("three handled");
   handleSubmit();
 }
 
